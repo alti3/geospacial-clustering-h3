@@ -1,6 +1,6 @@
-# H3-based geospatial clustering
+# Geospatial Clustering with H3
 
-### Key features & design choices
+## Key features & design choices
 
 | Aspect                 | What it does                                                                                                                        | Why it matters                                                                  |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
@@ -11,12 +11,23 @@
 | **Slim public API**    | `GeoClusterer(...).clusters()` and `GeoClusterer(...).labelled_points()`                                                            | Easy to integrate in ETL pipelines or notebooks.                                |
 | **Repro ready**        | Example CLI section shows end-to-end use.                                                                                           | Run `python geospatial_clustering_h3.py` to see it in action.                   |
 
-### How to use
+## How to use
 
+The `main.py` script shows how to use the library.
 ```bash
-pip uv sync
-uv run main.py        # runs the built-in demo
+uv sync # install dependencies
+uv run main.py # runs the built-in demo
 ```
+
+Example output:
+```bash
+INFO:__main__:Running example with 'dbscan' strategy...
+INFO:__main__:DBSCAN Strategy: Found 10 clusters
+INFO:__main__:Cluster 0: size=10 H3s: ['87283082bffffff', '87283082bffffff', '87283082bffffff', '87283082bffffff', '87283082bffffff', '87283082bffffff', '87283082bffffff', '87283082bffffff', '87283082bffffff', '87283082bffffff']
+INFO:__main__:Cluster 1: size=10 H3s: ['87283082bffffff', '87283082bffffff', '87283082bffffff', '87283082bffffff', '87283082bffffff', '87283082bffffff', '87283082bffffff', '87283082bffffff', '87283082bffffff', '87283082bffffff']
+```
+
+
 
 Or from a notebook / script:
 
