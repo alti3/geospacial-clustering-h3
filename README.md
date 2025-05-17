@@ -51,3 +51,11 @@ Feel free to tweak the distance threshold, resolution, or plug in another strate
 * Try tuning the H3 resolution—smaller hexes bring finer spatial detail.
 * Drop in alternative strategies (e.g., community detection) by subclassing `ClusteringStrategy`.
 * Scale out: the `_build_graph` method is isolated—swap in a parallel implementation or sparse backend if you hit performance ceilings.
+
+## Contributing
+
+Contributions are welcome! Please feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
