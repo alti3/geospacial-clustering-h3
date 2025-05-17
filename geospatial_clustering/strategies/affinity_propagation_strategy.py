@@ -37,11 +37,16 @@ class AffinityPropagationStrategy(ClusteringStrategy):
         distances), this should be 'precomputed'.
         Note: Affinity Propagation uses similarities, not distances. Higher values
         mean more similar. We will need to convert our distance matrix.
+    distance_threshold : int, optional
+        The H3 distance threshold used for graph construction. Accepted for
+        consistency in GeoClusterer, but not directly used by the
+        AffinityPropagation algorithm itself as it operates on the precomputed
+        similarity matrix derived from the graph.
     **ap_kwargs :
         Other keyword arguments to pass to `sklearn.cluster.AffinityPropagation`.
     """
 
-    def __init__(self, *, damping: float = 0.5, max_iter: int = 200, convergence_iter: int = 15, preference=None, affinity: str = 'precomputed', **ap_kwargs):
+    def __init__(self, *, damping: float = 0.5, max_iter: int = 200, convergence_iter: int = 15, preference=None, affinity: str = 'precomputed', distance_threshold: int | None = None, **ap_kwargs):
         if not SKLEARN_AVAILABLE:
             raise RuntimeError("scikit-learn must be installed for AffinityPropagationStrategy.")
         self.damping = damping
@@ -49,6 +54,7 @@ class AffinityPropagationStrategy(ClusteringStrategy):
         self.convergence_iter = convergence_iter
         self.preference = preference
         self.affinity = affinity # Should be 'precomputed'
+        # distance_threshold is accepted for API consistency, not directly used by this strategy's core logic.
         self.ap_kwargs = ap_kwargs
 
     def cluster(self, graph: nx.Graph, h3_index_to_coord: Dict[str, Tuple[float, float]]) -> List[List[str]]:

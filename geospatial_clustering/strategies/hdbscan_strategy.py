@@ -35,17 +35,22 @@ class HDBSCANStrategy(ClusteringStrategy):
         The metric to use when calculating distance between instances in a
         feature array. Since we provide a distance matrix, this should be
         'precomputed'.
+    distance_threshold : int, optional
+        The H3 distance threshold used for graph construction. Accepted for
+        consistency in GeoClusterer, but not directly used by HDBSCAN
+        parameters here as it operates on the precomputed distance matrix.
     **hdbscan_kwargs :
         Other keyword arguments to pass to the `hdbscan.HDBSCAN` constructor.
     """
 
-    def __init__(self, *, min_cluster_size: int = 5, min_samples: int | None = None, cluster_selection_epsilon: float = 0.0, metric: str = 'precomputed', **hdbscan_kwargs):
+    def __init__(self, *, min_cluster_size: int = 5, min_samples: int | None = None, cluster_selection_epsilon: float = 0.0, metric: str = 'precomputed', distance_threshold: int | None = None, **hdbscan_kwargs):
         if not HDBSCAN_AVAILABLE:
             raise RuntimeError("hdbscan library must be installed for HDBSCANStrategy.")
         self.min_cluster_size = min_cluster_size
         self.min_samples = min_samples
         self.cluster_selection_epsilon = cluster_selection_epsilon
         self.metric = metric
+        # distance_threshold is accepted for API consistency.
         self.hdbscan_kwargs = hdbscan_kwargs
 
     def cluster(self, graph: nx.Graph, h3_index_to_coord: Dict[str, Tuple[float, float]]) -> List[List[str]]:

@@ -7,8 +7,12 @@ from .strategies import (
     ClusteringStrategy,
     ConnectedComponentsStrategy,
     DBSCANStrategy,
+    AffinityPropagationStrategy,
+    HDBSCANStrategy,
+    SpectralClusteringStrategy,
     STRATEGY_REGISTRY,
-    SKLEARN_AVAILABLE
+    SKLEARN_AVAILABLE,
+    HDBSCAN_AVAILABLE
 )
 
 # Configure a default null handler for the library's root logger
@@ -22,8 +26,12 @@ __all__ = [
     "ClusteringStrategy",
     "ConnectedComponentsStrategy",
     "DBSCANStrategy",
+    "AffinityPropagationStrategy",
+    "HDBSCANStrategy",
+    "SpectralClusteringStrategy",
     "STRATEGY_REGISTRY",
     "SKLEARN_AVAILABLE",
+    "HDBSCAN_AVAILABLE",
 ]
 
 # You can also define __version__ here
