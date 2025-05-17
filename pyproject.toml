@@ -9,4 +9,6 @@ dependencies = [
     "networkx>=3.4.2",
     "numpy>=2.2.5",
     "scikit-learn>=1.6.1",
+    "hdbscan>=0.8.36",
+    "python-louvain>=0.16",
 ]

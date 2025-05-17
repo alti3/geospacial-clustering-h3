@@ -46,6 +46,21 @@ clusters = clusterer.clusters()
 
 Feel free to tweak the distance threshold, resolution, or plug in another strategy class.
 
+## Clustering strategies
+
+The library supports the following clustering strategies:
+
+* `ConnectedComponentsStrategy`: Clusters are weakly-connected components in the graph.
+* `DBSCANStrategy`: Clusters are based on density-based clustering.
+* `HDBSCANStrategy`: Hierarchical Density-Based Spatial Clustering of Applications with Noise. It's an extension of DBSCAN that can find clusters of varying densities and is more robust to parameter selection and doesn't require the eps parameter in the same way. (Requires the hdbscan library)
+* `AffinityPropagationStrategy`: Clusters are based on the Affinity Propagation algorithm. Identifies "exemplars" that represent clusters. It doesn't require the number of clusters to be specified beforehand. (Requires the scikit-learn library)
+* `SpectralClusteringStrategy`: Clusters are based on the Spectral Clustering algorithm. This method uses the eigenvalues of a similarity matrix to perform dimensionality reduction before clustering(Requires the scikit-learn library)
+* `MeanShiftStrategy`: Clusters are based on the Mean Shift algorithm. (Requires the scikit-learn library)
+* `AgglomerativeClusteringStrategy`: Clusters are based on the Agglomerative Clustering algorithm. (Requires the scikit-learn library)
+* `LouvainStrategy`: Clusters are based on the Louvain algorithm. A greedy optimization method for community detection to extract non-overlapping communities from large networks. (Requires the python-louvain library)
+* `LeidenStrategy`: Clusters are based on the Leiden algorithm. (Requires the leidenalg library)
+
+
 **Next steps:**
 
 * Try tuning the H3 resolution—smaller hexes bring finer spatial detail.
